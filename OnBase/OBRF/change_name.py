@@ -1,8 +1,12 @@
+# Designe By Bryan Urbina Guevara For Logicsa 2021
+# All rigth reserver Digital Concept 2021
+# Program that change the name of documents
+
 import os, time
 import pandas as pd
 # openpyxl
 
-"""path = os.chdir('C:/Users/Santiago/Desktop/change_name')
+path = os.chdir('C:/Users/Santiago/Desktop/change_name')
 archivo = 'C:/Users/Santiago/Desktop/DATA.xlsx' # Nombre del archivo de nombres
 contador = 0 # Unicamente con la funcion de contar la cantidad de archivos
 name_file = [] # Save all file name
@@ -29,27 +33,19 @@ for f in os.listdir(path):
 		nombre_anterior.append(name + typeFile)
 		contador += 1 # Cuenta la cantidad de archivos ejecutados
 
-#name_file.sort(key=os.path.getctime)
+name_file.sort(key=os.path.getctime)
 
 # here chane name this file's
 for file in name_file:
 	name = file.replace(file,next(r))
 	new_name = name + '.pdf'
 	new.append(new_name)
-	os.replace(file,new_name)"""
+	os.replace(file,new_name)
 
 
-"""for i in new:
+for i in new:
 	# print( "Nombre: ", i ,"\nFecha: "," {}".format(time.ctime(os.path.getctime(i))))
 	# print('Nombre anterior: ', i, '\nNumero nombre: ',next(data))
-	print(i)"""
+	print(i)
 
-p = os.getcwd()
-li = os.listdir(p)
-
-for i in li:
-	if i == ".py":
-		print(i, "\n")
-
-print("p1", len(li) )
-#print("p2", p2 )
+print('cantidad archivo: ', contador)
