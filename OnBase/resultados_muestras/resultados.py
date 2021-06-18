@@ -1,4 +1,5 @@
 import pandas as pd
+import json
 
 path = 'C:/Users/logic/OneDrive/Escritorio/Asignacion Muestra Mayo_2021.xlsx'
 d = pd.read_excel(path, sheet_name = 'Detalle')
@@ -11,49 +12,80 @@ for p in df['PROBLEMA']:
 	#if p == "CEDULA":
 	list_problema.append(p)
 
-#listProblemaFinal = []
-#listComentarioFinal = []
 
-Problemas = ['CEDULA','CONTRATO','FIRMA','RECIBO BASICO','COMPRABANTE DE INGRESOS']
+NOTIFICADOS = {
 
-"""CEDULA= ["NO ESTA EN FISICO / ONBASE" , "FORMATO DE CEDULA DIFERENTE"]
+"CEDULA":["NO ESTA EN FISICO / ONBASE" , "FORMATO DE CEDULA DIFERENTE"],
 	
-CONTRATO = ["NO COINCIDE FISICO / ONBASE", "SIN FIRMA EN FISICO / ONBASE", "NO ESTA EN DIGITAL / FISICO", "COPIAS DE CONTRATOS FISICOS / DIGITAL"]
+"CONTRATO":["ESCANER INCOMPLETO","NO COINCIDE FISICO / ONBASE", "SIN FIRMA EN FISICO / ONBASE", "NO ESTA EN DIGITAL / FISICO", "COPIAS DE CONTRATOS FISICOS / DIGITAL"],
 	
-FIRMA = ["NO COINCIDE FISICO /  ONBASE","FIRMA ALTERADA","SIN FIRMA"]
+"FIRMA":["NO COINCIDE FISICO /  ONBASE","FIRMA ALTERADA","SIN FIRMA", "FIRMA DIFERENTE"],
 	
-RECIBO BASICO = ["NO COINCIDE FISICO / ONBASE"]
+"RECIBO BASICO":["NO COINCIDE FISICO / ONBASE"],
 	
-COMPRABANTE DE INGRESOS = ["NO COINCIDE FISICO / ONBASE"]"""
+"COMPRABANTE DE INGRESOS":["NO COINCIDE FISICO / ONBASE"]
 
+}
 
 dicFinal = {}
-
-print("Diccionario:", dicFinal)
-
 CEDULA = {}
 CONTRATO = {}
+FIRMA = {}
 RB = {}
 CI = {}
 
-for p in Problemas:
-	cont = 0
+for clave,valor in NOTIFICADOS.items():
 	# i = indice del valor encontrado
 	# x = Valos dentro de la columna
 	for i,x in enumerate(list_problema):
-		if x == p:
+		#print(clave)
+		if x == clave:
+			# print("Problema: ", x)
 			m = df.iloc[i]['COMENTARIO']
-			cont += 1
-			if p == 'FIRMA':
-				CEDULA[m] = cont
-			#listProblemaFinal.append(x)
-			#listComentarioFinal.append(m)
-			#print(i, " | ")
-			#print(m)
-	break
+			#print("comentario: ", m)
+			for v in valor:
+				if m == v:
+					# VALIDANDO PROBLEMAS CON CEDULAS
+					if clave == "CEDULA":
+						if v in CEDULA:
+							CEDULA[v] += 1
+						else:
+							CEDULA[v] = 1
+					# VALIDANDO PROBLEMAS CON CONTRATOS
+					elif clave == "CONTRATO":
+						if v in CONTRATO:
+							CONTRATO[v] += 1
+						else:
+							CONTRATO[v] = 1
+					# VALIDANDO PROBLEMAS CON FIRMA
+					elif clave == "FIRMA":
+						if v in FIRMA:
+							FIRMA[v] += 1
+						else:
+							FIRMA[v] = 1
+					# VALIDANDO PROBLEMAS CON RECIBO BASICO
+					elif clave == "RECIBO BASICO":
+						if v in RB:
+							RB[v] += 1
+						else:
+							RB[v] = 1
+					# VALIDANDO PROBLEMAS CON COMPRABANTE DE INGRESOS
+					elif clave == "COMPRABANTE DE INGRESOS":
+						if v in CI:
+							CI[v] += 1
+						else:
+							CI[v] = 1
 
-print("Diccionario con valores: ", CEDULA)
 
+# with open('file.txt', 'w') as file:
+#      file.write(json.dumps(CONTRATO)) # use `json.loads` to do the reverse
+
+print("Diccionario Contrato: ", CONTRATO)
+"""print("Diccionario Cedula:  ", CEDULA)
+print("Diccionario Firma:  ", FIRMA)
+print("Diccionario Recibo Basico: ", RB)
+print("Diccionario Comprobante de Iingresos: ", CI)
+"""
 """print(listProblemaFinal)
 print(listComentarioFinal)"""
 
