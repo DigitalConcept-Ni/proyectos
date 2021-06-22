@@ -13,7 +13,7 @@ for p in df['PROBLEMA']:
 	#if p == "CEDULA":
 	list_problema.append(p)
 
-print(len(list_problema))
+# print(len(list_problema))
 
 
 NOTIFICADOS = {
@@ -34,8 +34,8 @@ dicFinal = {}
 CEDULA = {}
 CONTRATO = {}
 FIRMA = {}
-RB = {}
-CI = {}
+RB = {} # RECIBO BASICO
+CI = {} # COMPROBANTE DE INGRESOS
 
 for clave,valor in NOTIFICADOS.items():
 	# i = indice del valor encontrado
@@ -79,8 +79,8 @@ for clave,valor in NOTIFICADOS.items():
 						else:
 							CI[v] = 1
 
-print(dicFinal)
-r = totales(*CEDULA, *CONTRATO, *FIRMA, *RB, *CI)
+# print(dicFinal)
+# r = totales(*CEDULA, *CONTRATO, *FIRMA, *RB, *CI)
 
 
 # with open('file.txt', 'w') as file:
@@ -88,15 +88,15 @@ r = totales(*CEDULA, *CONTRATO, *FIRMA, *RB, *CI)
 
 # r = totales(CONTRATO)
 
-"""print("\n")
-print("Total por incidencia: ", totalTipo)
-print("porcentaje total: ", porcentajeTotal)
-print("Diccionario Contrato: ", CONTRATO)"""
-"""print("Diccionario Cedula:  ", CEDULA)
+print("\n")
+# print("Total por incidencia: ", totalTipo)
+# print("porcentaje total: ", porcentajeTotal)
+print("Diccionario Contrato: ", CONTRATO)
+print("Diccionario Cedula:  ", CEDULA)
 print("Diccionario Firma:  ", FIRMA)
 print("Diccionario Recibo Basico: ", RB)
 print("Diccionario Comprobante de Iingresos: ", CI)
-"""
+
 """print(listProblemaFinal)
 print(listComentarioFinal)"""
 

@@ -1,27 +1,26 @@
 
 datos = {
 
-"CONTRATO":{'ESCANER INCOMPLETO': 20, 'NO COINCIDE FISICO / ONBASE': 1, 'SIN FIRMA EN FISICO / ONBASE': 3, 'NO ESTA EN DIGITAL / FISICO': 5},
-"FIRMA":{"NO COINCIDE FISICO /  ONBASE": 10, "FIRMA ALTERADA": 20,"SIN FIRMA": 25, "FIRMA DIFERENTE": 45}
+"CONTRATO":  {'ESCANER INCOMPLETO': 23, 'NO COINCIDE FISICO / ONBASE': 5, 'NO ESTA EN DIGITAL / FISICO': 7},
+"CEDULA":{'NO ESTA EN FISICO / ONBASE': 5},
+"FIRMA":{'FIRMA ALTERADA': 9, 'SIN FIRMA': 3, 'FIRMA DIFERENTE': 4}
 }
 
-def totales(*kwargs):
+def totales(**kwargs):
 	muestraTotal = 3749
 	totalTipo = 0
 	porcentajeTotal = 0
 	dicFinal = []
-	print("prueba", kwargs)
+	# print("prueba", kwargs)
 	for clave, valor in kwargs.items():
-		break
-		print("clave valor",clave)
-		for c, v in kwargs[clave].items():
-			print(c, v)
+		print("Tipo: ",clave)
+		for c,v in kwargs[clave].items():
+			# print("Incidencia: ", c, "cantidad: ", v)
 			porcentaje = round((v/muestraTotal) * 100, 2)
 			totalTipo += v
 			porcentajeTotal += porcentaje
 			# dicFinal.append([clave + ': ' + str(valor)+ ' ' + 'Porcentaje: ' + str(porcentaje)])
-			print("porcentaje: ", porcentaje, "\n")
-		
+			print("Incidencia: ", c, "cantidad: ", v, "porcentaje: ", porcentaje, "\n")		
 
 	print("\n")
 	print("Total por incidencia: ", totalTipo)
@@ -30,9 +29,9 @@ def totales(*kwargs):
 
 	#return dicFinal
 
-# fin = totales(**datos)
+fin = totales(**datos)
 
-# print(fin)
+print(fin)
 
 
 """
