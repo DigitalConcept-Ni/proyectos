@@ -1,5 +1,6 @@
 import pandas as pd
 import json
+from prueba import totales
 
 path = 'C:/Users/logic/OneDrive/Escritorio/Asignacion Muestra Mayo_2021.xlsx'
 d = pd.read_excel(path, sheet_name = 'Detalle')
@@ -11,6 +12,8 @@ list_problema = []
 for p in df['PROBLEMA']:
 	#if p == "CEDULA":
 	list_problema.append(p)
+
+print(len(list_problema))
 
 
 NOTIFICADOS = {
@@ -76,11 +79,19 @@ for clave,valor in NOTIFICADOS.items():
 						else:
 							CI[v] = 1
 
+print(dicFinal)
+r = totales(*CEDULA, *CONTRATO, *FIRMA, *RB, *CI)
+
 
 # with open('file.txt', 'w') as file:
 #      file.write(json.dumps(CONTRATO)) # use `json.loads` to do the reverse
 
-print("Diccionario Contrato: ", CONTRATO)
+# r = totales(CONTRATO)
+
+"""print("\n")
+print("Total por incidencia: ", totalTipo)
+print("porcentaje total: ", porcentajeTotal)
+print("Diccionario Contrato: ", CONTRATO)"""
 """print("Diccionario Cedula:  ", CEDULA)
 print("Diccionario Firma:  ", FIRMA)
 print("Diccionario Recibo Basico: ", RB)
@@ -92,4 +103,3 @@ print(listComentarioFinal)"""
 
 """print("contador problema: ", contadorComentario, "\n")
 print("contador comentario: ", contadorProblema) """
-
